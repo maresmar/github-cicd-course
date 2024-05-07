@@ -12,10 +12,16 @@ jobs:
           uses: actions/setup-python@v5
           with:
             python-version: '3.11'
+            cache: 'pip'
+        - run: pip install -r requirements.txt
         - name: Install dependencies
           run: |
             pip install -r ./task_a/requirements.txt
         # TODO: run pytest
         - name: Run test
           run: pytest ./task_a//task_a.py
+        - uses: actions/upload-artifact@v4
+          with:
+            name: report
+            path: report.html
         
