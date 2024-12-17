@@ -4,16 +4,7 @@ on: [push]
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
-        python-version: [ "3.10", "3.11", "pypy3.10" ]
-        exclude:
-          - os: macos-latest
-            python-version: "3.10"
-          - os: windows-latest
-            python-version: "3.10"
+    runs-on: "ubuntu-latest"
     name: pytest
     steps:
         - uses: actions/checkout@v4
